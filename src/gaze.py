@@ -39,7 +39,9 @@ class Vision:
         right_ratio = self.iris_eye_ratio(right_eye_corners, right_iris)
         left_ratio = self.iris_eye_ratio(left_eye_corners, left_iris)
         avg_ratio = (right_ratio + left_ratio) / 2
-    
+        self.iris_position = avg_ratio
+
+        return frame
 
 
     # Returns a list of (x, y) coordinates for the specific landmark indices requested
@@ -51,6 +53,7 @@ class Vision:
             coordinates.append((point.x, point.y))
         return coordinates
     
+
     # calculates the ratio for how far the iris is moving rletive to the eye size 
     def iris_eye_ratio(self, corner, iris):
         iris_x = iris[0][0]
